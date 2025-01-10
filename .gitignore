@@ -48,3 +48,5 @@ rsync-to-shay
 teams.txt
 to-do.txt
 venv
+personal_keys.py
+keys.py
