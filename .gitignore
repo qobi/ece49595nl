@@ -49,6 +49,7 @@ teams.txt
 to-do.txt
 venv
 personal_keys.py
+old_keys.py
 keys.py
 n*.txt
 raw-term-project-schedule.txt
