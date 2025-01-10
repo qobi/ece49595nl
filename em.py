@@ -13,7 +13,7 @@ def normalize(l):
     return (1.0/sum(l))*array(l)
 
 def random_labels(points, k):
-    return [normalize([random() for j in range(0, k)]) for point in points]
+    return [normalize([random() for j in range(k)]) for point in points]
 
 def weighted_mean(weights, points):
     return ((1.0/sum(weights))*
@@ -58,7 +58,7 @@ def all_labeled(labels):
 def all_labels(labels, k):
     if len(labels)==0:
         return False
-    for j in range(0, k):
+    for j in range(k):
         if sum(array(labels)[:, j])==0:
             return False
     return True

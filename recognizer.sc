@@ -3,16 +3,16 @@
      (fail)
      (if (not (member (first words) lexicon))
 	 (fail)
-	 ;; words[1:]
+	 ;; word[1:]
 	 (rest words))))
 
 (define (strip-a-common-noun words)
- (strip-a-word words '(dog cat bus pair apple keyboard book weed microphone)))
+ (strip-a-word words '(chair computer hat charger boat phone weed banana)))
 
 (define (strip-a-proper-noun words)
- (strip-a-word
-  words
-  '(Lafayette Apple Professor-Siskind Mitch-Daniels Taylor-Swift Lady-Gaga)))
+ (strip-a-word words
+	       '(Michael Richard-Nixon Taylor-Swift Donald-Trump Joe-Biden
+			 Professor-Siskind JFK Mung-Chiang)))
 
 (define (strip-a-determiner words)
  (strip-a-word words '(the a some every forty-two)))
@@ -25,13 +25,13 @@
 	 (strip-a-common-noun (strip-a-determiner words))))
 
 (define (strip-an-intransitive-verb words)
- (strip-a-word words '(dies runs ate smoked typed fell jumped happened)))
+ (strip-a-word words '(ran died failed jumped cooked fell sang)))
 
 (define (strip-a-transitive-verb words)
- (strip-a-word words '(ate smoked drank sang kissed fired took)))
+ (strip-a-word words '(ate smoked drank kissed fired)))
 
-;;; VP -> Vintans
-;;;  |    Vtrans NP
+;;; VP -> Vintrans
+;;;    |  Vtrans NP
 
 (define (strip-a-verb-phrase words)
  (either (strip-an-intransitive-verb words)

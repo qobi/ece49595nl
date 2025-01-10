@@ -1,14 +1,19 @@
 (define-structure state stack words)
 
 (define (parse-a-word state category lexicon)
+ ;; state.stack
+ ;; state.words
  (let ((stack (state-stack state))
        (words (state-words state)))
   (if (null? words)
       (fail)
       (if (not (member (first words) lexicon))
 	  (fail)
-	  (make-state (cons (list category (first words)) stack)
-		      (rest words))))))
+	  (make-state
+	   ;; [[category, words[0]]]+stack
+	   (cons (list category (first words)) stack)
+	   ;; wors[1:]
+	   (rest words))))))
 
 (define (pop-one category state)
  (let ((stack (state-stack state))
@@ -24,21 +29,16 @@
 	      words)))
 
 (define (parse-a-common-noun state)
- (parse-a-word state
-	       'n-common
-	       '(dog cat bus pair apple keyboard book weed microphone)))
+ (parse-a-word state 'n-common '(chair computer hat charger boat phone weed banana)))
 
 (define (parse-a-proper-noun state)
- (parse-a-word
-  state
-  'n-proper
-  '(Lafayette Apple Professor-Siskind Mitch-Daniels Taylor-Swift Lady-Gaga)))
+ (parse-a-word state
+	       'n-proper
+	       '(Michael Richard-Nixon Taylor-Swift Donald-Trump Joe-Biden
+			 Professor-Siskind JFK Mung-Chiang)))
 
 (define (parse-a-determiner state)
- (parse-a-word
-  state
-  'determiner
-  '(the a some every forty-two)))
+ (parse-a-word state 'det '(the a some every forty-two)))
 
 ;;; NP -> Nprop
 ;;;    |  DET Ncommon
@@ -48,19 +48,13 @@
 	 (pop-two 'np (parse-a-common-noun (parse-a-determiner state)))))
 
 (define (parse-an-intransitive-verb state)
- (parse-a-word
-  state
-  'v-intrans
-  '(dies runs ate smoked typed fell jumped happened)))
+ (parse-a-word state 'v-intrans '(ran died failed jumped cooked fell sang)))
 
 (define (parse-a-transitive-verb state)
- (parse-a-word
-  state
-  'v-trans
-  '(ate smoked drank sang kissed fired took)))
+ (parse-a-word state 'v-trans '(ate smoked drank kissed fired)))
 
-;;; VP -> Vintans
-;;;  |    Vtrans NP
+;;; VP -> Vintrans
+;;;    |  Vtrans NP
 
 (define (parse-a-verb-phrase state)
  (either (pop-one 'vp (parse-an-intransitive-verb state))

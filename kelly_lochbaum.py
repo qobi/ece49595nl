@@ -102,7 +102,7 @@ def vocal_tract(Fs, A, ug):
         delta = r*(f[:N-1]-b[1:])
         # Propagate the forward wave forward.
         f = np.concatenate((np.array([f_input]), f[:N-1]+delta))
-        # Propagate the backsward wave backward.
+        # Propagate the backward wave backward.
         b = np.concatenate((b[1:]+delta, np.array([b_input])))
         # The output is the pressure at the lips.
         P.append(f[N-1])
@@ -143,3 +143,59 @@ def formants(Fs, P):
         if yaxis[i]>yaxis[i-1] and yaxis[i]>yaxis[i+1]:
             fs.append(freq[i])
     return fs
+
+# plot_signal(Fs, impulse())
+# plot_signal(Fs, vocal_tract(Fs, A_a, impulse()))
+# plot_signal(Fs, vocal_tract(Fs, A_i, impulse()))
+# plot_signal(Fs, vocal_tract(Fs, A_u, impulse()))
+# plot_signal(Fs, vocal_tract(Fs, A_ae, impulse()))
+
+# plot_frequency_response(Fs, vocal_tract(Fs, A_a, impulse()))
+# plot_frequency_response(Fs, vocal_tract(Fs, A_i, impulse()))
+# plot_frequency_response(Fs, vocal_tract(Fs, A_u, impulse()))
+# plot_frequency_response(Fs, vocal_tract(Fs, A_ae, impulse()))
+
+# formants(Fs, vocal_tract(Fs, A_a, impulse()))[0:2]
+# formants(Fs, vocal_tract(Fs, A_i, impulse()))[0:2]
+# formants(Fs, vocal_tract(Fs, A_u, impulse()))[0:2]
+# formants(Fs, vocal_tract(Fs, A_ae, impulse()))[0:2]
+
+# plot_signal(Fs, glottal_pulse(Fs, f0, Duration))
+# plot_frequency_response(Fs, glottal_pulse(Fs, f0, Duration))
+# play(Fs, glottal_pulse(Fs, f0, Duration))
+
+# plot_signal(Fs, vocal_tract(Fs, A_a, glottal_pulse(Fs, f0, Duration)))
+# plot_signal(Fs, vocal_tract(Fs, A_i, glottal_pulse(Fs, f0, Duration)))
+# plot_signal(Fs, vocal_tract(Fs, A_u, glottal_pulse(Fs, f0, Duration)))
+# plot_signal(Fs, vocal_tract(Fs, A_ae, glottal_pulse(Fs, f0, Duration)))
+
+# plot_frequency_response(Fs, vocal_tract(Fs, A_a, glottal_pulse(Fs, f0, Duration)))
+# plot_frequency_response(Fs, vocal_tract(Fs, A_i, glottal_pulse(Fs, f0, Duration)))
+# plot_frequency_response(Fs, vocal_tract(Fs, A_u, glottal_pulse(Fs, f0, Duration)))
+# plot_frequency_response(Fs, vocal_tract(Fs, A_ae, glottal_pulse(Fs, f0, Duration)))
+
+# play(Fs, vocal_tract(Fs, A_a, glottal_pulse(Fs, f0, Duration)))
+# play(Fs, vocal_tract(Fs, A_i, glottal_pulse(Fs, f0, Duration)))
+# play(Fs, vocal_tract(Fs, A_u, glottal_pulse(Fs, f0, Duration)))
+# play(Fs, vocal_tract(Fs, A_ae, glottal_pulse(Fs, f0, Duration)))
+
+# plot_signal(Fs, varying_pitch(f0, Fs, Duration))
+
+# plot_signal(Fs, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration))
+# plot_frequency_response(Fs, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration))
+# play(Fs, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration))
+
+# plot_signal(Fs, vocal_tract(Fs, A_a, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration)))
+# plot_signal(Fs, vocal_tract(Fs, A_i, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration)))
+# plot_signal(Fs, vocal_tract(Fs, A_u, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration)))
+# plot_signal(Fs, vocal_tract(Fs, A_ae, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration)))
+
+# plot_frequency_response(Fs, vocal_tract(Fs, A_a, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration)))
+# plot_frequency_response(Fs, vocal_tract(Fs, A_i, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration)))
+# plot_frequency_response(Fs, vocal_tract(Fs, A_u, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration)))
+# plot_frequency_response(Fs, vocal_tract(Fs, A_ae, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration)))
+
+# play(Fs, vocal_tract(Fs, A_a, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration)))
+# play(Fs, vocal_tract(Fs, A_i, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration)))
+# play(Fs, vocal_tract(Fs, A_u, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration)))
+# play(Fs, vocal_tract(Fs, A_ae, glottal_pulse(Fs, varying_pitch(f0, Fs, Duration), Duration)))

@@ -1,10 +1,9 @@
 (define (a-common-noun)
- (either '(dog) '(cat) '(bus) '(pair) '(apple) '(keyboard) '(book) '(weed)
-	 '(microphone)))
+ (either '(chair) '(computer) '(hat) '(charger) '(boat) '(phone) '(weed) '(banana)))
 
 (define (a-proper-noun)
- (either '(Lafayette) '(Apple) '(Professor-Siskind) '(Mitch-Daniels)
-	 '(Taylor-Swift) '(Lady-Gaga)))
+ (either '(Michael) '(Richard-Nixon) '(Taylor-Swift) '(Donald-Trump) '(Joe-Biden)
+	 '(Professor-Siskind) '(JFK) '(Mung-Chiang)))
 
 (define (a-determiner)
  (either '(the) '(a) '(some) '(every) '(forty-two)))
@@ -17,14 +16,13 @@
 	 (append (a-determiner) (a-common-noun))))
 
 (define (an-intransitive-verb)
- (either '(dies) '(runs) '(ate) '(smoked) '(typed) '(fell) '(jumped)
-	 '(happened)))
+ (either '(ran) '(died) '(failed) '(jumped) '(cooked) '(fell) '(sang)))
 
 (define (a-transitive-verb)
- (either '(ate) '(smoked) '(drank) '(sang) '(kissed) '(fired) '(took)))
+ (either '(ate) '(smoked) '(drank) '(kissed) '(fired)))
 
-;;; VP -> Vintans
-;;;  |    Vtrans NP
+;;; VP -> Vintrans
+;;;    |  Vtrans NP
 
 (define (a-verb-phrase)
  (either (an-intransitive-verb)
