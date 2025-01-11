@@ -8,7 +8,9 @@ import keys
 
 done = False
 written = True
-client = openai.OpenAI(api_key=keys.openai)
+client = openai.AzureOpenAI(azure_endpoint=keys.azure_openai_endpoint,
+                            api_key=keys.azure_openai_key,
+                            api_version=keys.azure_openai_api_version)
 discourse = [{"role": "system",
               "content":
               "I am an instructor of the Purdue experimental undergraduate course in Electrical and Computer Engineering on Natural Language Processing"}]

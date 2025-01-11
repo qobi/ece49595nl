@@ -37,10 +37,10 @@ def speech_recognition_thread_function(name):
             try:
                 if speech_recognizer==None:
                     speech_config = speechsdk.SpeechConfig(
-                        subscription=keys.azure,
-                        region="eastus")
+                        subscription=keys.azure_key,
+                        region=keys.azure_region)
                     audio_config = speechsdk.audio.AudioConfig(
-                        device_name="pulse")
+                        device_name="pipewire")
                     speech_recognizer = speechsdk.SpeechRecognizer(
                         speech_config=speech_config, audio_config=audio_config)
                     speech_recognizer.recognized.connect(handle_final_result)

@@ -39,5 +39,5 @@ while ((not speech_to_text_microsoft.listen) or
        len(text_to_speech_microsoft.things_to_say)>0):
     time.sleep(1)
 
-text_to_speech_microsoft.stop()
 speech_to_text_microsoft.stop()
+text_to_speech_microsoft.stop()

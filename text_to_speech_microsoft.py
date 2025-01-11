@@ -17,8 +17,8 @@ stop_speech_synthesis = False
 def set_up():
     global speech_synthesizer
     speech_config = speechsdk.SpeechConfig(
-        subscription=keys.azure,
-        region="eastus")
+        subscription=keys.azure_key,
+        region=keys.azure_region)
     speech_config.speech_synthesis_voice_name = "en-US-AriaNeural"
     speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
 
