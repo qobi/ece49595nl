@@ -142,7 +142,7 @@ def point_with_minimum_average_distance(distance):
 
 def invert(distance):
     def internal(point1, point2):
-        return distance(point1, point1)
+        return distance(point2, point1)
     return internal
 
 def bidirectional(distance, aggregate):

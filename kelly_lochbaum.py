@@ -5,12 +5,12 @@
 #
 # Mathur, S. and Story, B., Vocal tract modeling: Implementation of continuous
 # length variations in a half-sample delay Kelly-Lochbaum model, ISSPIT, 2003.
-# http://ieeexplore.ieee.org/iel5/9296/29546/01341230.pdf?arnumber=1341230
+# https://ieeexplore.ieee.org/document/1341230
 #
 # Mathur S., Story B., and Rodriguez J., Vocal-Tract Modeling: Fractional
 # Elongation of Segment Lengths in a Waveguide Model With Half-Sample Delays,
 # IEEE Transaction on Audio Speech and Language Processing, 2006.
-# http://ieeexplore.ieee.org/iel5/10376/32978/101109TSA2005858550.pdf?arnumber=101109TSA2005858550
+# https://ieeexplore.ieee.org/document/1677994
 #
 # in part, from MATLAB code provided by Jont B Allen to compute the response of
 # a vowel for HW05 of ECE-537, dated 12 Sep 2004 and 16 Sep 2006, and, in part,
