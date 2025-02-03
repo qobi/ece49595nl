@@ -80,4 +80,4 @@
 
 (define-syntax how-many
  ;; model counting
- (syntax-rules () ((how-many e) (length (all-values e)))))
+ (syntax-rules () ((how-many e) (length (all-values (if e #t (fail)))))))
