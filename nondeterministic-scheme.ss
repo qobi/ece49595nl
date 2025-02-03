@@ -14,7 +14,7 @@
            (c #f)))
     #t))))
 
-(define (fail) (error #f "Top-level fail"))
+(define (fail) (error "Top-level fail"))
 
 (define-syntax either (syntax-rules () ((either e1 e2) (if (a-boolean) e1 e2))))
 

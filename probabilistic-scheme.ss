@@ -3,7 +3,7 @@
 (define rest cdr)
 
 (define (flip alpha)
- (unless (<= 0 alpha 1) (error #f "Alpha not probability"))
+ (unless (<= 0 alpha 1) (error "Alpha not probability"))
  (cond ((= alpha 0) #f)
        ((= alpha 1) #t)
        (else (call-with-current-continuation
@@ -15,7 +15,7 @@
 		       (c #f)))
 		#t))))))
 
-(define (bottom) (error #f "Top-level bottom"))
+(define (bottom) (error "Top-level bottom"))
 
 (define (sample x)
  (let loop ((x (normalize x)) (p 1))
@@ -53,7 +53,7 @@
             (p 1))
        (set! flip
              (lambda (alpha)
-              (unless (<= 0 alpha 1) (error #f "Alpha not probability"))
+              (unless (<= 0 alpha 1) (error "Alpha not probability"))
 	      (cond ((= alpha 0) #f)
 		    ((= alpha 1) #t)
 		    (else (call-with-current-continuation
