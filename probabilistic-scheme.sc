@@ -71,12 +71,14 @@
 		(distribution ,(second form)))
    expander)))
 
+(define (lg x) (/ (log x) (log 2)))
+
 ;;; entropy
 (define-macro entropy
  (lambda (form expander)
   (expander
-   '(map-reduce +
-		0
-		(lambda (pair) (* (cdr pair) (log (cdr pair))))
-		(distribution ,(second form)))
+   '(- (map-reduce +
+		   0
+		   (lambda (pair) (* (cdr pair) (lg (cdr pair))))
+		   (distribution ,(second form))))
    expander)))
