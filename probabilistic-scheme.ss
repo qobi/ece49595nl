@@ -104,13 +104,15 @@
   ((central-moment n e)
    (let ((mu (expected-value e))) (expected-value (expt (- e mu) n))))))
 
+(define (lg x) (/ (log x) (log 2)))
+
 (define-syntax entropy
  (syntax-rules ()
   ((entropy e)
-   (map-reduce +
-	       0
-	       (lambda (pair) (* (cdr pair) (log (cdr pair))))
-	       (distribution e)))))
+   (- (map-reduce +
+		  0
+		  (lambda (pair) (* (cdr pair) (lg (cdr pair))))
+		  (distribution e))))))
 
 (define-syntax kl-divergence
  ;; Kullback-Leibler divergence
@@ -123,7 +125,7 @@
 	       (lambda (x)
 		(let ((p (probability (equal? e1 x)))
 		      (q (probability (equal? e2 x))))
-		 (* p (log (/ p q)))))
+		 (* p (lg (/ p q)))))
 	       (support e1)))))
 
 (define (product-distribution f d1 d2)
