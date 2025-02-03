@@ -1,5 +1,5 @@
 from numpy.linalg import inv, det
-from numpy import pi, sqrt, exp, dot, sum, product, outer, transpose, array
+from numpy import pi, sqrt, exp, dot, sum, prod, outer, transpose, array
 from random import random
 
 def distance(x, mean, variance):
@@ -44,10 +44,10 @@ def reclassify_all(points, mixture_proportions, means, variances):
             for point in points]
 
 def likelihood(points, mixture_proportions, means, variances):
-    return product([sum([mixture_proportion*gaussian(point, mean, variance)
-                         for mixture_proportion, mean, variance
-                         in zip(mixture_proportions, means, variances)])
-                    for point in points])
+    return prod([sum([mixture_proportion*gaussian(point, mean, variance)
+                      for mixture_proportion, mean, variance
+                      in zip(mixture_proportions, means, variances)])
+                 for point in points])
 
 def all_labeled(labels):
     for label in labels:
