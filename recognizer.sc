@@ -3,32 +3,34 @@
      (fail)
      (if (not (member (first words) lexicon))
 	 (fail)
-	 ;; word[1:]
 	 (rest words))))
 
 (define (strip-a-common-noun words)
- (strip-a-word words '(chair computer hat charger boat phone weed banana)))
+ (strip-a-word words
+	       '(cat chair blueberry ice-cream dumpster computer weed hair)))
 
 (define (strip-a-proper-noun words)
- (strip-a-word words
-	       '(Michael Richard-Nixon Taylor-Swift Donald-Trump Joe-Biden
-			 Professor-Siskind JFK Mung-Chiang)))
+ (strip-a-word
+  words
+  '(Japan Purdue Chipotle Yosemite Donald-Trump Mung-Chiang Elon-Musk
+	  Bradon-Smith Taylor-Swift)))
 
 (define (strip-a-determiner words)
  (strip-a-word words '(the a some every forty-two)))
 
 ;;; NP -> Nprop
-;;;    |  DET Ncommon
+;;;    | DET Ncommon
 
 (define (strip-a-noun-phrase words)
  (either (strip-a-proper-noun words)
 	 (strip-a-common-noun (strip-a-determiner words))))
 
-(define (strip-an-intransitive-verb words)
- (strip-a-word words '(ran died failed jumped cooked fell sang)))
+(define (strip-an-intransitive-verb  words)
+ (strip-a-word words '(ran spoke ate swam juggled failed passed vomited slept
+			   screwed-up)))
 
 (define (strip-a-transitive-verb words)
- (strip-a-word words '(ate smoked drank kissed fired)))
+ (strip-a-word words '(pushed pulled slapped kissed smoked fought fired)))
 
 ;;; VP -> Vintrans
 ;;;    |  Vtrans NP
